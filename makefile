@@ -2,7 +2,7 @@ TAR = cacti
 
 .PHONY: dbg opt depend clean clean_dbg clean_opt
 
-all: dbg
+all: opt
 
 dbg: $(TAR).mk obj_dbg
 	@$(MAKE) TAG=dbg -C . -f $(TAR).mk
@@ -26,3 +26,14 @@ clean_opt: obj_opt
 	@$(MAKE) TAG=opt -C . -f $(TAR).mk clean
 	rm -rf $<
 
+OUT := $(CFG).out
+CSV := cs152-sp18-outputs/$(notdir $(basename $(CFG))).csv
+
+$(OUT): $(CFG)
+	./cacti -infile $(CFG)
+
+$(CSV): $(OUT)
+	mkdir -p $(dir $@)
+	cp $< $@
+
+run: $(CSV)
