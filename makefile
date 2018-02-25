@@ -26,6 +26,7 @@ clean_opt: obj_opt
 	@$(MAKE) TAG=opt -C . -f $(TAR).mk clean
 	rm -rf $<
 
+CFG ?= cs152-sp18-outputs/L2cache.cfg
 OUT := $(CFG).out
 CSV := cs152-sp18-outputs/$(notdir $(basename $(CFG))).csv
 
