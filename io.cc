@@ -2043,11 +2043,11 @@ bool InputParameter::error_checking()
   }
 
   int C = cache_sz/nbanks;
-  if (C < 64 && !g_ip->is_3d_mem)
+  /* if (C < 64 && !g_ip->is_3d_mem)
   {
     cerr << "Cache size must >=64" << endl;
     return false;
-  }
+  } */
 
 //TODO: revisit this
 //   if (pure_ram==true && assoc!=1)
