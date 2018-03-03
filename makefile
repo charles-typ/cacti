@@ -16,8 +16,6 @@ obj_dbg:
 obj_opt:
 	mkdir $@
 
-clean: clean_dbg clean_opt
-
 clean_dbg: obj_dbg
 	@$(MAKE) TAG=dbg -C . -f $(TAR).mk clean
 	rm -rf $<
@@ -25,6 +23,8 @@ clean_dbg: obj_dbg
 clean_opt: obj_opt
 	@$(MAKE) TAG=opt -C . -f $(TAR).mk clean
 	rm -rf $<
+
+veryclean: clean_dbg clean_opt
 
 CFG ?= cs152-sp18-outputs/L2cache.cfg
 OUT := $(CFG).out
@@ -38,3 +38,7 @@ $(CSV): $(OUT)
 	cp $< $@
 
 run: $(CSV)
+
+clean:
+	rm -rf cs152-sp18-outputs
+	rm -rf cs152-sp18-configs/*.out
