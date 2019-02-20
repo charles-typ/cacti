@@ -26,9 +26,9 @@ clean_opt: obj_opt
 
 veryclean: clean_dbg clean_opt
 
-CFG ?= cs152-sp18-outputs/L2cache.cfg
+CFG ?= cs152-sp19-outputs/L2cache.cfg
 OUT := $(CFG).out
-CSV := cs152-sp18-outputs/$(notdir $(basename $(CFG))).csv
+CSV := cs152-sp19-outputs/$(notdir $(basename $(CFG))).csv
 
 $(OUT): $(CFG) all
 	./cacti -infile $(CFG)
@@ -40,5 +40,5 @@ $(CSV): $(OUT)
 run: $(CSV)
 
 clean:
-	rm -rf cs152-sp18-outputs
-	rm -rf cs152-sp18-configs/*.out
+	rm -rf cs152-sp19-outputs
+	rm -rf cs152-sp19-configs/*.out
